@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Premium Motors | Seminovos de Alto Padrão</title>
+<meta name="description" content="Premium Motors - Concessionária de carros seminovos premium. Confira nosso estoque selecionado.">
+
+<!-- Google Fonts: Oswald (display, condensada, clima automotivo) + Inter (corpo/legibilidade) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+
+<!-- Ícones (usados de forma pontual: whatsapp, telefone, etc via SVG inline — sem dependência externa) -->
+<style>
+/* =========================================================
+   PREMIUM MOTORS — Design tokens
+   ========================================================= */
+:root {
+  --bg-base: #1a1a1a;
+  --bg-elevated: #242424;
+  --bg-elevated-2: #2c2c2c;
+  --border-subtle: #383838;
+
+  --text-primary: #f5f5f5;
+  --text-secondary: #a8a8a8;
+  --text-muted: #737373;
+
+  --accent-blue: #007bff;
+  --accent-blue-hover: #2f96ff;
+  --accent-blue-soft: rgba(0, 123, 255, 0.12);
+
+  --accent-whats: #25D366;
+  --accent-whats-hover: #2fe07a;
+
+  --font-display: 'Oswald', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --radius-s: 6px;
+  --radius-m: 12px;
+  --radius-l: 20px;
+
+  --shadow-card: 0 8px 24px rgba(0, 0, 0, 0.35);
+  --transition: 200ms ease;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+
+a { color: inherit; text-decoration: none; }
+
+ul { list-style: none; }
+
+button { font-family: inherit; cursor: pointer; }
+
+:focus-visible {
+  outline: 2px solid var(--accent-blue-hover);
+  outline-offset: 2px;
+}
+
+.container {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
+
+/* =========================================================
+   BOTÕES
+   ========================================================= */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 26px;
+  border-radius: var(--radius-s);
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  border: 1px solid transparent;
+  transition: transform var(--transition), background var(--transition), border-color var(--transition), box-shadow var(--transition);
+}
+
+.btn--primary {
+  background: var(--accent-blue);
+  color: #fff;
+  box-shadow: 0 4px 18px rgba(0, 123, 255, 0.35);
+}
+.btn--primary:hover { background: var(--accent-blue-hover); transform: translateY(-2px); }
+
+.btn--ghost {
+  background: transparent;
+  color: var(--text-secondary);
+  border-color: var(--border-subtle);
+}
+.btn--ghost:hover { border-color: var(--accent-blue); color: var(--text-primary); }
+
+.btn--whats {
+  background: var(--accent-whats);
+  color: #0c1f0c;
+  width: 100%;
+  justify-content: center;
+  font-family: var(--font-body);
+  text-transform: none;
+  letter-spacing: normal;
+  font-weight: 700;
+}
+.btn--whats:hover { background: var(--accent-whats-hover); transform: translateY(-1px); }
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(26, 26, 26, 0.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 76px;
+  gap: 24px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.logo__mark {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-s);
+  background: linear-gradient(135deg, var(--accent-blue), #0056b3);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 15px;
+  color: #fff;
+}
+
+.logo__text {
+  font-family: var(--font-display);
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+}
+.logo__text strong { color: var(--text-primary); font-weight: 600; }
+
+.nav {
+  display: flex;
+  gap: 32px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+.nav a { transition: color var(--transition); position: relative; }
+.nav a:hover { color: var(--text-primary); }
+
+.header__contact {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--text-secondary);
+  flex-shrink: 0;
+}
+.header__contact svg { color: var(--accent-blue); }
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  padding: 6px;
+}
+.nav-toggle span {
+  width: 22px;
+  height: 2px;
+  background: var(--text-primary);
+  border-radius: 2px;
+}
+
+/* =========================================================
+   HERO
+   ========================================================= */
+.hero {
+  position: relative;
+  padding: 120px 0 90px;
+  overflow: hidden;
+  background: radial-gradient(ellipse at top, #202020 0%, var(--bg-base) 60%);
+}
+
+.hero__glow {
+  position: absolute;
+  top: -180px;
+  right: -120px;
+  width: 560px;
+  height: 560px;
+  background: radial-gradient(circle, rgba(0, 123, 255, 0.28) 0%, rgba(0, 123, 255, 0) 70%);
+  filter: blur(10px);
+  pointer-events: none;
+}
+
+.hero__inner { position: relative; max-width: 760px; }
+
+.hero__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  color: var(--accent-blue-hover);
+  margin-bottom: 18px;
+}
+
+.hero__title {
+  font-family: var(--font-display);
+  font-size: clamp(38px, 6vw, 64px);
+  line-height: 1.08;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  margin-bottom: 20px;
+}
+.hero__title span { color: var(--accent-blue-hover); }
+
+.hero__subtitle {
+  font-size: 17px;
+  color: var(--text-secondary);
+  max-width: 540px;
+  margin-bottom: 36px;
+}
+
+.hero__stats {
+  display: flex;
+  gap: 40px;
+  margin-top: 56px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border-subtle);
+  flex-wrap: wrap;
+}
+.stat { display: flex; flex-direction: column; gap: 4px; }
+.stat__num {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.stat__label { font-size: 13px; color: var(--text-muted); }
+
+/* =========================================================
+   TÍTULOS DE SEÇÃO
+   ========================================================= */
+.section-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--accent-blue-hover);
+  margin-bottom: 12px;
+  letter-spacing: 0.05em;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(26px, 3.5vw, 36px);
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.section-subtitle {
+  color: var(--text-secondary);
+  margin-top: 10px;
+  font-size: 15px;
+}
+
+/* =========================================================
+   FILTROS
+   ========================================================= */
+.filtros { padding: 64px 0 32px; }
+
+.filtros__head { margin-bottom: 32px; }
+
+.filtros__bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 18px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-m);
+  padding: 24px;
+}
+
+.filtro-campo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1 1 180px;
+  min-width: 160px;
+}
+
+.filtro-campo label {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.filtro-campo select {
+  background: var(--bg-elevated-2);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  padding: 12px 14px;
+  border-radius: var(--radius-s);
+  font-size: 14px;
+  font-family: var(--font-body);
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23a8a8a8' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 34px;
+  transition: border-color var(--transition);
+}
+.filtro-campo select:hover,
+.filtro-campo select:focus { border-color: var(--accent-blue); }
+
+#btnLimparFiltros { flex: 0 0 auto; height: 45px; }
+
+.filtros__resultado {
+  margin-top: 18px;
+  font-size: 13px;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+
+/* =========================================================
+   CATÁLOGO / GRID
+   ========================================================= */
+.catalogo { padding: 8px 0 90px; }
+
+.grid-carros {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px;
+}
+
+@media (max-width: 980px) {
+  .grid-carros { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .grid-carros { grid-template-columns: 1fr; }
+}
+
+.sem-resultados {
+  text-align: center;
+  color: var(--text-muted);
+  padding: 60px 0;
+  font-size: 15px;
+}
+
+/* Card */
+.car-card {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-m);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-card);
+  transition: transform var(--transition), border-color var(--transition);
+}
+.car-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(0, 123, 255, 0.4);
+}
+
+.car-card__media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--bg-elevated-2);
+}
+.car-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 400ms ease;
+}
+.car-card:hover .car-card__media img { transform: scale(1.06); }
+
+.car-card__badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(26, 26, 26, 0.85);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  padding: 5px 10px;
+  border-radius: var(--radius-s);
+  backdrop-filter: blur(4px);
+}
+
+.car-card__body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  flex: 1;
+}
+
+.car-card__title {
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+}
+.car-card__title span { color: var(--text-secondary); font-weight: 400; }
+
+.car-card__specs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+.car-card__specs span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.car-card__specs span::before {
+  content: '';
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--accent-blue);
+}
+
+.car-card__price {
+  font-family: var(--font-mono);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--accent-blue-hover);
+  margin-top: auto;
+  padding-top: 6px;
+}
+.car-card__price small {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* =========================================================
+   SOBRE
+   ========================================================= */
+.sobre { padding: 90px 0; background: var(--bg-elevated); }
+
+.sobre__inner {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.sobre__texto p { color: var(--text-secondary); margin-top: 16px; font-size: 15.5px; }
+.sobre__texto .section-title { margin-top: 6px; margin-bottom: 4px; }
+
+.sobre__diferenciais {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 28px;
+}
+.diferencial {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  color: var(--text-primary);
+}
+.diferencial__icone {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--accent-blue-soft);
+  color: var(--accent-blue-hover);
+  font-size: 13px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.sobre__imagem img {
+  border-radius: var(--radius-l);
+  box-shadow: var(--shadow-card);
+}
+
+@media (max-width: 860px) {
+  .sobre__inner { grid-template-columns: 1fr; }
+  .sobre__imagem { order: -1; }
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+.footer { background: #151515; padding: 64px 0 0; border-top: 1px solid var(--border-subtle); }
+
+.footer__inner {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1fr;
+  gap: 40px;
+  padding-bottom: 48px;
+}
+
+.footer__col p { color: var(--text-muted); font-size: 14px; margin-top: 8px; }
+.footer__col h3 {
+  font-family: var(--font-display);
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 4px;
+}
+.footer__col .logo { margin-bottom: 10px; }
+
+.footer__bottom {
+  border-top: 1px solid var(--border-subtle);
+  padding: 20px 0;
+  text-align: center;
+  font-size: 12.5px;
+  color: var(--text-muted);
+}
+
+@media (max-width: 700px) {
+  .footer__inner { grid-template-columns: 1fr; gap: 28px; }
+}
+
+/* =========================================================
+   BOTÃO FLUTUANTE WHATSAPP
+   ========================================================= */
+.whatsapp-float {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--accent-whats);
+  display: grid;
+  place-items: center;
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
+  z-index: 60;
+  transition: transform var(--transition);
+}
+.whatsapp-float:hover { transform: scale(1.08); }
+
+/* =========================================================
+   RESPONSIVO — HEADER MOBILE
+   ========================================================= */
+@media (max-width: 860px) {
+  .nav {
+    position: fixed;
+    top: 76px;
+    left: 0;
+    right: 0;
+    background: var(--bg-elevated);
+    border-bottom: 1px solid var(--border-subtle);
+    flex-direction: column;
+    padding: 20px 24px;
+    gap: 18px;
+    transform: translateY(-130%);
+    transition: transform 250ms ease;
+  }
+  .nav.is-open { transform: translateY(0); }
+
+  .header__contact { display: none; }
+  .nav-toggle { display: flex; }
+}
+
+@media (max-width: 500px) {
+  .hero { padding: 90px 0 60px; }
+  .filtros__bar { padding: 18px; }
+  .filtros__bar .filtro-campo { flex: 1 1 100%; }
+  #btnLimparFiltros { width: 100%; justify-content: center; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- ================= HEADER / NAVBAR ================= -->
+<header class="header" id="topo">
+  <div class="container header__inner">
+    <a href="#topo" class="logo">
+      <span class="logo__mark">PM</span>
+      <span class="logo__text">PREMIUM<strong>MOTORS</strong></span>
+    </a>
+
+    <nav class="nav" id="nav">
+      <a href="#estoque">Estoque</a>
+      <a href="#sobre">Sobre Nós</a>
+      <a href="#contato">Contato</a>
+    </nav>
+
+    <div class="header__contact">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      <span>(16) 99999-0000</span>
+    </div>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ================= HERO SECTION ================= -->
+<section class="hero">
+  <div class="hero__glow"></div>
+  <div class="container hero__inner">
+    <p class="hero__eyebrow">Curadoria Premium &mdash; Estoque revisado e certificado</p>
+    <h1 class="hero__title">Seu próximo <span>seminovo premium</span> está aqui.</h1>
+    <p class="hero__subtitle">Selecionamos os melhores veículos seminovos do mercado, com procedência garantida, para quem não abre mão de qualidade.</p>
+    <a href="#estoque" class="btn btn--primary hero__cta">
+      Ver Estoque Completo
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+    </a>
+
+    <div class="hero__stats">
+      <div class="stat"><span class="stat__num">10+</span><span class="stat__label">Veículos selecionados</span></div>
+      <div class="stat"><span class="stat__num">100%</span><span class="stat__label">Procedência verificada</span></div>
+      <div class="stat"><span class="stat__num">5⭐</span><span class="stat__label">Avaliação dos clientes</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FILTROS ================= -->
+<section class="filtros" id="estoque">
+  <div class="container">
+    <div class="filtros__head">
+      <h2 class="section-title">Nosso Estoque</h2>
+      <p class="section-subtitle">Use os filtros abaixo para encontrar o carro ideal para você.</p>
+    </div>
+
+    <div class="filtros__bar">
+      <div class="filtro-campo">
+        <label for="filtroMarca">Marca</label>
+        <select id="filtroMarca">
+          <option value="">Todas as marcas</option>
+        </select>
+      </div>
+
+      <div class="filtro-campo">
+        <label for="filtroAno">Ano</label>
+        <select id="filtroAno">
+          <option value="">Todos os anos</option>
+        </select>
+      </div>
+
+      <div class="filtro-campo">
+        <label for="filtroPreco">Preço máximo</label>
+        <select id="filtroPreco">
+          <option value="">Sem limite</option>
+          <option value="60000">Até R$ 60.000</option>
+          <option value="90000">Até R$ 90.000</option>
+          <option value="120000">Até R$ 120.000</option>
+          <option value="150000">Até R$ 150.000</option>
+          <option value="200000">Até R$ 200.000</option>
+        </select>
+      </div>
+
+      <button id="btnLimparFiltros" class="btn btn--ghost">Limpar Filtros</button>
+    </div>
+
+    <p class="filtros__resultado" id="resultadoContagem"></p>
+  </div>
+</section>
+
+<!-- ================= CATÁLOGO ================= -->
+<section class="catalogo">
+  <div class="container">
+    <div id="grid-carros" class="grid-carros">
+      <!-- Cards gerados dinamicamente via JavaScript (estoqueCarros) -->
+    </div>
+    <p id="semResultados" class="sem-resultados" hidden>Nenhum veículo encontrado com os filtros selecionados.</p>
+  </div>
+</section>
+
+<!-- ================= SOBRE NÓS ================= -->
+<section class="sobre" id="sobre">
+  <div class="container sobre__inner">
+    <div class="sobre__texto">
+      <p class="section-eyebrow">Sobre a Premium Motors</p>
+      <h2 class="section-title">Tradição e confiança na compra do seu seminovo</h2>
+      <p>Há mais de 10 anos no mercado, a Premium Motors nasceu com o propósito de transformar a compra de um carro seminovo em uma experiência tranquila e transparente. Cada veículo do nosso estoque passa por uma criteriosa inspeção mecânica e documental antes de chegar até você.</p>
+      <p>Trabalhamos com marcas e modelos selecionados, priorizando procedência, estado de conservação e o melhor custo-benefício do mercado regional.</p>
+
+      <div class="sobre__diferenciais">
+        <div class="diferencial">
+          <span class="diferencial__icone">✓</span>
+          <span>Inspeção de 100+ itens</span>
+        </div>
+        <div class="diferencial">
+          <span class="diferencial__icone">✓</span>
+          <span>Documentação regularizada</span>
+        </div>
+        <div class="diferencial">
+          <span class="diferencial__icone">✓</span>
+          <span>Financiamento facilitado</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="sobre__imagem">
+      <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=700&q=80" alt="Showroom Premium Motors" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer" id="contato">
+  <div class="container footer__inner">
+    <div class="footer__col">
+      <a href="#topo" class="logo">
+        <span class="logo__mark">PM</span>
+        <span class="logo__text">PREMIUM<strong>MOTORS</strong></span>
+      </a>
+      <p>Seminovos premium com procedência garantida.</p>
+    </div>
+
+    <div class="footer__col">
+      <h3>Contato</h3>
+      <p>(16) 99999-0000</p>
+      <p>contato@premiummotors.com.br</p>
+      <p>Av. das Concessionárias, 1200 &mdash; Matão/SP</p>
+    </div>
+
+    <div class="footer__col">
+      <h3>Horário de Funcionamento</h3>
+      <p>Segunda a Sexta: 9h às 18h</p>
+      <p>Sábado: 9h às 13h</p>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <p>&copy; 2026 Premium Motors. Site vitrine de demonstração &mdash; todos os direitos reservados.</p>
+  </div>
+</footer>
+
+<!-- ================= BOTÃO FLUTUANTE WHATSAPP ================= -->
+<a href="https://wa.me/5516999990000?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es." target="_blank" rel="noopener" class="whatsapp-float" aria-label="Fale conosco no WhatsApp">
+  <svg width="30" height="30" viewBox="0 0 32 32" fill="white"><path d="M16.001 2.667c-7.363 0-13.334 5.97-13.334 13.333 0 2.352.615 4.646 1.782 6.666L2.667 29.333l6.83-1.791a13.27 13.27 0 0 0 6.504 1.657h.006c7.362 0 13.333-5.97 13.333-13.333 0-3.56-1.387-6.907-3.906-9.427a13.24 13.24 0 0 0-9.433-3.772zm0 24.4h-.005a11.05 11.05 0 0 1-5.634-1.542l-.404-.24-4.053 1.063 1.082-3.951-.263-.406a11.03 11.03 0 0 1-1.692-5.892c0-6.111 4.973-11.083 11.086-11.083 2.96 0 5.744 1.153 7.837 3.248a11.02 11.02 0 0 1 3.246 7.841c-.003 6.111-4.975 11.082-11.086 11.082v-.001zm6.076-8.302c-.333-.167-1.97-.972-2.275-1.083-.305-.111-.527-.166-.75.167-.221.333-.859 1.083-1.053 1.305-.194.223-.388.25-.72.084-.334-.167-1.409-.52-2.684-1.657-.992-.885-1.663-1.978-1.858-2.311-.194-.334-.021-.514.146-.68.15-.15.334-.389.5-.583.167-.194.222-.333.334-.556.111-.222.055-.417-.028-.583-.083-.167-.75-1.807-1.028-2.474-.271-.65-.546-.562-.75-.573-.194-.01-.417-.012-.639-.012-.222 0-.583.083-.889.417-.305.333-1.166 1.14-1.166 2.78 0 1.639 1.194 3.222 1.36 3.444.167.222 2.35 3.59 5.694 5.034.796.344 1.417.549 1.901.703.799.254 1.526.218 2.101.132.641-.096 1.97-.805 2.248-1.583.278-.778.278-1.445.194-1.584-.083-.139-.305-.222-.639-.389z"/></svg>
+</a>
+
+<script>
+/* =========================================================
+   PREMIUM MOTORS — script.js
+   =========================================================
+   Estrutura de dados: 10 vagas prontas para você preencher
+   com os carros reais do seu estoque. Basta editar os
+   valores de cada objeto abaixo.
+   ========================================================= */
+
+const estoqueCarros = [
+  {
+    id: 1,
+    marca: "Volkswagen",
+    modelo: "Golf GTI 2.0T",
+    ano: 2017,
+    preco: 160000,
+    km: "32.000",
+    cambio: "Automático DSG",
+    imagem: "https://cms-assets.autoscout24.com/uaddx06iwzdz/2N0EGRywaAXcHlOD88CHQ3/a86cacf0c429d50b455cbdb2b575ae00/2017-volkswagen-golf-gti-5-door-autobahn-01-db.jpg?w=1100"
+  },
+  {
+    id: 2,
+    marca: "Hyundai",
+    modelo: "Azera 3.0 V6",
+    ano: 2015,
+    preco: 105000,
+    km: "89.500",
+    cambio: "Automático",
+    imagem: "https://image.webmotors.com.br/_fotos/anunciousados/gigante/2026/202604/20260407/hyundai-azera-3.0-mpfi-gls-v6-24v-gasolina-4p-automatico-wmimagem10240526377.jpg"
+  },
+  {
+    id: 3,
+    marca: "Mitsubishi",
+    modelo: "Pajero Full 3.2 HPE",
+    ano: 2020,
+    preco: 173000,
+    km: "24.300",
+    cambio: "Automático 4X4",
+    imagem: "https://s3.ecompletocarros.dev/images/lojas/285/veiculos/87362/veiculoInfoVeiculoImagesMobile/vehicle_image_1642043727_d41d8cd98f00b204e9800998ecf8427e.jpeg"
+  },
+  {
+    id: 4,
+    marca: "Toyota",
+    modelo: "Camry 3.5 V6",
+    ano: 2019,
+    preco: 104000,
+    km: "38.900",
+    cambio: "Automático",
+    imagem: "https://www.thecarexpert.co.uk/wp-content/uploads/2020/02/DSCF0065-scaled-1.jpeg"
+  },
+  {
+    id: 5,
+    marca: "Jeep",
+    modelo: "Renegade S T270",
+    ano: 2024,
+    preco: 125000,
+    km: "10.000",
+    cambio: "Automático",
+    imagem: "https://cdn.motor1.com/images/mgl/OoomRy/s3/jeep-renegade-s-dianteira-diagonal.jpg"
+  },
+  {
+    id: 6,
+    marca: "Troller",
+    modelo: "T4 3.2 XLT",
+    ano: 2018,
+    preco: 158000,
+    km: "51.200",
+    cambio: "Manual",
+    imagem: "https://weudealerimagesprd.blob.core.windows.net/br1053/stockvehicles/32928_05446aca-e8aa-49fb-8c82-25af63e05b03.jpg"
+  },
+  {
+    id: 7,
+    marca: "BMW",
+    modelo: "135I 3.0",
+    ano: 2016,
+    preco: 135000,
+    km: "49.800",
+    cambio: "Automático",
+    imagem: "https://images.clickdealer.co.uk/vehicles/5672/5672358/large1/132900637.jpg"
+  },
+  {
+    id: 8,
+    marca: "Peugeot",
+    modelo: "RCZ 16T THP",
+    ano: 2015,
+    preco: 107000,
+    km: "29.700",
+    cambio: "Automático",
+    imagem: "https://media.drive.com.au/obj/tx_q:50,rs:auto:1920:1080:1/caradvice/private/129f5a261bbeec9b85fc95f55c3f3f02"
+  },
+  {
+    id: 9,
+    marca: "Chevrolet",
+    modelo: "Trailblazer Midnight",
+    ano: 2020,
+    preco: 215000,
+    km: "32.100",
+    cambio: "Automático",
+    imagem: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaQsY6rJcWtg2hyXESRJAwM4PHQR4hhse14ysI9afGP4gcI9ARAQIKxZtT&s=10"
+  },
+  {
+    id: 10,
+    marca: "Ford",
+    modelo: "Ranger Limited V6",
+    ano: 2025,
+    preco: 298000,
+    km: "13.200",
+    cambio: "Automático",
+    imagem: "https://cdn.motor1.com/images/mgl/Akg2A9/s3/ford-ranger-v6-vs.-vw-amarok-v6.jpg"
+  }
+];
+
+/* Número de WhatsApp da concessionária (formato internacional, sem espaços/símbolos) */
+const NUMERO_WHATSAPP = "5516999990000";
+
+/* =========================================================
+   ELEMENTOS DO DOM
+   ========================================================= */
+const gridCarros = document.getElementById("grid-carros");
+const semResultados = document.getElementById("semResultados");
+const resultadoContagem = document.getElementById("resultadoContagem");
+
+const filtroMarca = document.getElementById("filtroMarca");
+const filtroAno = document.getElementById("filtroAno");
+const filtroPreco = document.getElementById("filtroPreco");
+const btnLimparFiltros = document.getElementById("btnLimparFiltros");
+
+const navToggle = document.getElementById("navToggle");
+const nav = document.getElementById("nav");
+
+/* =========================================================
+   FORMATAÇÃO
+   ========================================================= */
+function formatarPreco(valor) {
+  return valor.toLocaleString("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0
+  });
+}
+
+function gerarLinkWhatsApp(carro) {
+  const mensagem = `Olá! Tenho interesse no ${carro.marca} ${carro.modelo} ${carro.ano}. Podem me passar mais informações?`;
+  return `https://wa.me/${NUMERO_WHATSAPP}?text=${encodeURIComponent(mensagem)}`;
+}
+
+/* =========================================================
+   RENDERIZAÇÃO DOS CARDS
+   ========================================================= */
+function criarCardCarro(carro) {
+  const card = document.createElement("article");
+  card.className = "car-card";
+
+  card.innerHTML = `
+    <div class="car-card__media">
+      <img src="${carro.imagem}" alt="${carro.marca} ${carro.modelo}" loading="lazy">
+      <span class="car-card__badge">${carro.ano}</span>
+    </div>
+    <div class="car-card__body">
+      <h3 class="car-card__title">${carro.marca} <span>${carro.modelo}</span></h3>
+      <div class="car-card__specs">
+        <span>${carro.km} km</span>
+        <span>${carro.cambio}</span>
+        <span>${carro.ano}</span>
+      </div>
+      <div class="car-card__price">
+        <small>À vista</small>
+        ${formatarPreco(carro.preco)}
+      </div>
+      <a class="btn btn--whats" href="${gerarLinkWhatsApp(carro)}" target="_blank" rel="noopener">
+        Tenho Interesse via WhatsApp
+      </a>
+    </div>
+  `;
+
+  return card;
+}
+
+function renderizarCarros(lista) {
+  gridCarros.innerHTML = "";
+
+  if (lista.length === 0) {
+    semResultados.hidden = false;
+  } else {
+    semResultados.hidden = true;
+    lista.forEach(carro => {
+      gridCarros.appendChild(criarCardCarro(carro));
+    });
+  }
+
+  resultadoContagem.textContent = `Exibindo ${lista.length} de ${estoqueCarros.length} veículos`;
+}
+
+/* =========================================================
+   POPULAR FILTROS DINAMICAMENTE
+   ========================================================= */
+function popularFiltros() {
+  const marcas = [...new Set(estoqueCarros.map(carro => carro.marca))].sort();
+  const anos = [...new Set(estoqueCarros.map(carro => carro.ano))].sort((a, b) => b - a);
+
+  marcas.forEach(marca => {
+    const option = document.createElement("option");
+    option.value = marca;
+    option.textContent = marca;
+    filtroMarca.appendChild(option);
+  });
+
+  anos.forEach(ano => {
+    const option = document.createElement("option");
+    option.value = ano;
+    option.textContent = ano;
+    filtroAno.appendChild(option);
+  });
+}
+
+/* =========================================================
+   LÓGICA DE FILTRAGEM
+   ========================================================= */
+function aplicarFiltros() {
+  const marcaSelecionada = filtroMarca.value;
+  const anoSelecionado = filtroAno.value;
+  const precoMaximo = filtroPreco.value ? Number(filtroPreco.value) : null;
+
+  const resultado = estoqueCarros.filter(carro => {
+    const passaMarca = !marcaSelecionada || carro.marca === marcaSelecionada;
+    const passaAno = !anoSelecionado || String(carro.ano) === anoSelecionado;
+    const passaPreco = !precoMaximo || carro.preco <= precoMaximo;
+
+    return passaMarca && passaAno && passaPreco;
+  });
+
+  renderizarCarros(resultado);
+}
+
+function limparFiltros() {
+  filtroMarca.value = "";
+  filtroAno.value = "";
+  filtroPreco.value = "";
+  renderizarCarros(estoqueCarros);
+}
+
+/* =========================================================
+   MENU MOBILE
+   ========================================================= */
+function alternarMenu() {
+  nav.classList.toggle("is-open");
+}
+
+function fecharMenuAoClicarLink() {
+  nav.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => nav.classList.remove("is-open"));
+  });
+}
+
+/* =========================================================
+   EVENTOS
+   ========================================================= */
+filtroMarca.addEventListener("change", aplicarFiltros);
+filtroAno.addEventListener("change", aplicarFiltros);
+filtroPreco.addEventListener("change", aplicarFiltros);
+btnLimparFiltros.addEventListener("click", limparFiltros);
+navToggle.addEventListener("click", alternarMenu);
+
+/* =========================================================
+   INICIALIZAÇÃO
+   ========================================================= */
+document.addEventListener("DOMContentLoaded", () => {
+  popularFiltros();
+  renderizarCarros(estoqueCarros);
+  fecharMenuAoClicarLink();
+});
+
+</script>
+</body>
+</html>
